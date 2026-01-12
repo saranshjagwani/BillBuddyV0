@@ -17,7 +17,7 @@ export default function FloatingActionButton({
 
       // Logic: Hide if scrolling down, show if scrolling up
       // currentScrollY > 50 ensures it doesn't flicker at the very top
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      if (currentScrollY > lastScrollY && currentScrollY > 10) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
