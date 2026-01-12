@@ -87,7 +87,7 @@ export default function ShopSetupPage() {
               }}
             >
               <img
-                src="/src/assets/logo/BillBuddyLogo2.png"
+                src="/public/BillBuddyLogo2.png"
                 alt="BillBuddy Logo"
                 className="h-24 w-24 sm:h-28 sm:w-28 object-contain"
               />

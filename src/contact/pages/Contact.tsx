@@ -55,7 +55,7 @@ export default function ContactPage() {
               }}
             >
               <img
-                src="/src/assets/logo/BillBuddyLogo2.png"
+                src="/public/BillBuddyLogo2.png"
                 alt="BillBuddy Logo"
                 className="h-16 w-16 object-contain"
               />

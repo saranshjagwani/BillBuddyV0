@@ -40,7 +40,7 @@ export default function Navbar() {
                 }}
               >
                 <img
-                  src="/src/assets/logo/BillBuddyLogo2.png"
+                  src="/public/BillBuddyLogo2.png"
                   alt="BillBuddy Logo"
                   className="w-8 h-8 object-contain"
                 />

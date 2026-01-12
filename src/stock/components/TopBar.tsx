@@ -52,7 +52,7 @@ export default function TopBar({
               }}
             >
               <img
-                src="/src/assets/logo/BillBuddyLogo2.png"
+                src="/public/BillBuddyLogo2.png"
                 alt="BillBuddy"
                 className="w-8.75 h-8.75 object-contain"
               />
