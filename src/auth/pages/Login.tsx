@@ -71,7 +71,7 @@ export default function BillBuddyLogin() {
                   }}
                 >
                   <img
-                    src="/public/BillBuddyLogo2.png"
+                    src="/BillBuddyLogo2.png"
                     alt="BillBuddy Logo"
                     className="h-28 w-28 sm:h-36 sm:w-36 object-contain"
                   />
