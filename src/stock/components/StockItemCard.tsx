@@ -69,7 +69,7 @@ export default function StockItemCard({
 
       {/* RIGHT SIDE: Actions */}
       {/* Actions */}
-      <div className="flex items-center gap-2 sm:self-center pl-0 sm:pl-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-50 mt-2 sm:mt-0">
+      <div className="flex items-center gap-2 sm:self-center pl-0 sm:pl-2 mt-2 sm:mt-0">
         <button
           onClick={() => onEdit(item)}
           className="p-2 text-blue-600"

@@ -221,8 +221,8 @@ const StockPage = () => {
         isOpen={showPdfModal}
         pdf={stockPdf}
         onClose={() => setShowPdfModal(false)}
-        onDownload={() => stockPdf && downloadPdf(stockPdf)}
-        onShare={() => stockPdf && sharePdf(stockPdf)}
+        onDownload={() => stockPdf && downloadPdf(stockPdf,statusFilter)}
+        onShare={() => stockPdf && sharePdf(stockPdf,statusFilter)}
       />
       <ConfirmDeleteModal
         isOpen={!!deleteId}

@@ -1,3 +1,4 @@
+import type { StockStatus } from "../types/stock.types";
 /**
  * BILLBUDDY PDF SHARING - Fast as Flash ⚡
  * Built for speed, simplicity, and reliability
@@ -8,21 +9,26 @@
 /**
  * Generates filename: STOCK_LIST_06Jan2025_11:53.pdf
  */
-function generateFileName(): string {
+function generateFileName(status:StockStatus): string {
   const now = new Date();
   const day = String(now.getDate()).padStart(2, '0');
   const month = now.toLocaleString('en-US', { month: 'short' });
   const year = now.getFullYear();
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
-  return `STOCK_LIST_${day}${month}${year}_${hours}:${minutes}.pdf`;
+  if(status==="inStock"){
+  return `IN_STOCK_LIST_${day}${month}${year}_${hours}:${minutes}.pdf`;
+  }
+  else {
+  return `OUT_OF_STOCK_LIST_${day}${month}${year}_${hours}:${minutes}.pdf`;
+  }
 }
 
 /**
  * Converts Blob to shareable File
  */
-async function toFile(blob: Blob): Promise<File> {
-  const fileName = generateFileName();
+async function toFile(blob: Blob, status:StockStatus): Promise<File> {
+  const fileName = generateFileName(status);
   const buffer = await blob.arrayBuffer();
   return new File([buffer], fileName, { 
     type: 'application/pdf',
@@ -34,8 +40,8 @@ async function toFile(blob: Blob): Promise<File> {
  * 📥 DOWNLOAD PDF
  * Simple, fast, reliable
  */
-export async function downloadPdf(blob: Blob): Promise<void> {
-  const fileName = generateFileName();
+export async function downloadPdf(blob: Blob,status:StockStatus): Promise<void> {
+  const fileName = generateFileName(status);
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -51,9 +57,9 @@ export async function downloadPdf(blob: Blob): Promise<void> {
  * Opens native share sheet with all apps:
  * WhatsApp, Telegram, Email, Drive, etc.
  */
-export async function sharePdf(blob: Blob): Promise<void> {
+export async function sharePdf(blob: Blob ,status:StockStatus): Promise<void> {
   try {
-    const file = await toFile(blob);
+    const file = await toFile(blob,status);
     
     if (!navigator.share || !navigator.canShare?.({ files: [file] })) {
       throw new Error("Share not supported");
@@ -68,7 +74,7 @@ export async function sharePdf(blob: Blob): Promise<void> {
   } catch (error) {
     // Silent fallback
     if ((error as any)?.name !== 'AbortError') {
-      await downloadPdf(blob);
+      await downloadPdf(blob,status);
     }
   }
 }
