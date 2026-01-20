@@ -1,4 +1,4 @@
-// src/services/user.service.ts
+// This file defines user made by us in user collection in Firestore
 
 export interface AppUserProfile {
   uid: string;
