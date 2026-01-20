@@ -22,6 +22,7 @@ import { doesUserExist } from "../../shop/services/user.service";
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [setupComplete, setSetupComplete] = useState<boolean | null>(null);
 
   /**
    * setupComplete meanings:
@@ -29,8 +30,7 @@ export function useAuth() {
    * - false → logged in, setup not completed
    * - true  → logged in, setup completed
    */
-  const [setupComplete, setSetupComplete] = useState<boolean | null>(null);
-
+  
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (u) => {
       setUser(u);

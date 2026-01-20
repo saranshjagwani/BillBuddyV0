@@ -54,6 +54,7 @@ export function setupRecaptcha(containerId: string): void {
  */
 export async function sendOtp(phoneNumber: string): Promise<void> {
   const appVerifier = (window as any).recaptchaVerifier;
+  console.log("App Verifier:", appVerifier);
 
   confirmationResult = await signInWithPhoneNumber(
     auth,
