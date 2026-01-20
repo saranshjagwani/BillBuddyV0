@@ -14,18 +14,12 @@ export function usePhoneAuth() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
- 
-
-  const statechange = (newStep: Step) => {
-    setStep(newStep);
-    console.log("Step is now ",newStep);
-  };
-
   /**
    * WHY:
    * Centralizes OTP send logic so UI never handles side-effects.
    * Prevents duplicated logic across screens.
    */
+  
   const handleContinue = async () => {
     try {
      setLoading(true);
@@ -35,12 +29,7 @@ export function usePhoneAuth() {
       }
            
       await sendOtp(phoneNumber);
-      console.log("Sending OTP to:", phoneNumber);
-      console.log("reCAPTCHA verified:", isCaptcha);
-      console.log("OTP sent successfully (simulated).");
-      console.log("Step is ",step);
-      statechange("OTP");
-      console.log("Step changed to ",step);
+      setStep("OTP");
     } catch (err) {
       console.error(err);
       setIsCaptcha(true);
